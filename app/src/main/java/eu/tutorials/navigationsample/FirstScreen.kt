@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import eu.tutorials.navigationsample.ui.theme.NavigationSampleTheme
 
 @Composable
-fun FirstScreen() {
+fun FirstScreen(navigateToSecondScreen: () -> Unit) {
     val name= remember{ mutableStateOf("") }
 
     Column(modifier = Modifier
@@ -34,7 +34,7 @@ fun FirstScreen() {
         OutlinedTextField(value = name.value, onValueChange ={
             name.value=it
         } )
-        Button(onClick = { /*TODO*/
+        Button(onClick = { navigateToSecondScreen()
         }) {
             Text(text = "Go to Second Screen")
         }
@@ -44,6 +44,6 @@ fun FirstScreen() {
 @Composable
 fun FirstPreview() {
     NavigationSampleTheme {
-        FirstScreen()
+        FirstScreen({} )
     }
 }
